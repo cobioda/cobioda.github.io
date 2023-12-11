@@ -80,13 +80,13 @@ analytics:
 
 # Site Author
 author:
-  name             : "CoBiODA"
+  name             : 
   avatar           : "cobioda.png"
-  bio              : "Computational Biology Omics Data Analysis"
-  location         : "IPMC"
-  employer         : "CNRS"
+  bio              :
+  location         : "IPMC - CNRS"
+  employer         :
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=lebrigand+kevin"
-  googlescholar    : "http://yourfullgooglescholarurl.com"
+  googlescholar    :
   email            : "lebrigand@ipmc.cnrs.fr"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
