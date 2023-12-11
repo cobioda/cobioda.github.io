@@ -17,7 +17,7 @@ repository               : "cobioda/cobioda.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
-future                   : true
+future                   : false
 read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
 talkmap_link             : false #change to true to add link to talkmap on talks page
 comments:
@@ -80,12 +80,12 @@ analytics:
 
 # Site Author
 author:
-  name             : 
+  name             :
   avatar           : "cobioda.png"
   bio              :
   location         : "IPMC - CNRS"
   employer         :
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=lebrigand+kevin"
+  pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=lebrigand+kevin"
   googlescholar    :
   email            : "lebrigand@ipmc.cnrs.fr"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
@@ -102,8 +102,8 @@ author:
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         : "https://www.linkedin.com/in/kevin-lebrigand-5a56ab99/"
-  orcid            : "https://orcid.org/my-orcid?orcid=0000-0001-5604-7893"
+  linkedin         : #"https://www.linkedin.com/in/kevin-lebrigand-5a56ab99/"
+  orcid            : #"https://orcid.org/my-orcid?orcid=0000-0001-5604-7893"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
