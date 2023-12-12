@@ -1,7 +1,16 @@
 # main links links
 main:
-  - title: "Publications"
+  - title: "Expertises"
+    url: /expertises/
+
+  - title: "Ressources"
+    url: /ressources/
+
+  - title: "Research"
     url: /publications/
+
+  - title: "Project"
+    url: /projects/
 
   - title: "Talks"
     url: /talks/
@@ -9,5 +18,8 @@ main:
   - title: "Teaching"
     url: /teaching/
 
-  - title: "Blog Posts"
+  - title: "People"
+    url: /people/
+
+  - title: "Blog"
     url: /year-archive/

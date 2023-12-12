@@ -1,5 +1,5 @@
 ---
-title: "4th Workshop Single-Cell and Spatial multiomics<br>Roscoff 2022"
+title: "4th Workshop Single-Cell and Spatial multiomics Roscoff 2022"
 collection: teaching
 type: "Graduate course"
 permalink: /teaching/sincellTE22
@@ -41,4 +41,4 @@ Prerequisites
 Participants must have prior experience on NGS data analysis  with everyday use of R and good knowledge of Unix command line. Before the training, participants will be asked to familiarize themselves with the processing and primary analyses steps of scRNA-seq datasets with provided pedagogic material. Study material : Already working on his/her own single cell dataset is not mandatory.
 
 
-<span style="color: red;">Next venue: November 2023 !</span>
+<span style="color: red;"><i>Next venue: November 2023 !</i></span>

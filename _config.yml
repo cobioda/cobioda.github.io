@@ -83,8 +83,8 @@ author:
   name             :
   avatar           : "cobioda.png"
   bio              :
-  location         : "IPMC - CNRS"
-  employer         :
+  location         : "Sophia-Antipolis, France"
+  employer         : "IPMC - CNRS"
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=lebrigand+kevin"
   googlescholar    :
   email            : "lebrigand@ipmc.cnrs.fr"
@@ -184,6 +184,18 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:path/
+  projects:
+    output: true
+    permalink: /:collection/:path/
+  ressources:
+    output: true
+    permalink: /:collection/:path/
+  expertises:
+    output: true
+    permalink: /:collection/:path/
+  people:
+    output: true
+    permalink: /:collection/:path/
   talks:
     output: true
     permalink: /:collection/:path/
@@ -218,10 +230,46 @@ defaults:
       author_profile: true
       share: true
       comments: true
+  # _people
+  - scope:
+      path: ""
+      type: people
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
   # _publications
   - scope:
       path: ""
       type: publications
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
+  # _projects
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
+  # _expertises
+  - scope:
+      path: ""
+      type: expertises
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
+  # _ressources
+  - scope:
+      path: ""
+      type: ressources
     values:
       layout: single
       author_profile: true
