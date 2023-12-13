@@ -3,8 +3,8 @@ main:
   - title: "Expertises"
     url: /expertises/
 
-  - title: "Ressources"
-    url: /ressources/
+  - title: "IT"
+    url: /it/
 
   - title: "Research"
     url: /publications/

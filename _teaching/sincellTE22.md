@@ -1,11 +1,12 @@
 ---
-title: "4th Workshop Single-Cell and Spatial multiomics Roscoff 2022"
+title: "4th Workshop Single-Cell and Spatial multiomics"
 collection: teaching
 type: "Graduate course"
 permalink: /teaching/sincellTE22
 venue: "Roscoff"
 date: 2022-01-01
 location: "Roscoff, FR"
+excerpt: ''
 ---
 
 [Access Program](https://moodle.france-bioinformatique.fr/course/view.php?id=7)
