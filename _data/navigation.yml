@@ -1,16 +1,16 @@
 # main links links
 main:
-  - title: "Expertises"
-    url: /expertises/
+  - title: "Projects"
+    url: /projects/
 
   - title: "IT"
     url: /it/
 
   - title: "Research"
-    url: /publications/
+    url: /research/
 
-  - title: "Project"
-    url: /projects/
+  - title: "Grants"
+    url: /grants/
 
   - title: "Talks"
     url: /talks/

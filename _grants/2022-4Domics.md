@@ -1,7 +1,7 @@
 ---
 title: "4D-OMICS"
-collection: projects
-permalink: /projects/2022-4Domics
+collection: grants
+permalink: /grants/2022-4Domics
 excerpt: 'Construire un instrument numérique régional pour la biologie quantitative multi-échelle<br><i><u>Pascal Barbry</u></i>'
 date: 2021-06-12
 grant: 'EquipeX+'

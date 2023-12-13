@@ -178,16 +178,13 @@ collections:
   teaching:
     output: true
     permalink: /:collection/:path/
-  publications:
+  research:
     output: true
     permalink: /:collection/:path/
-  portfolio:
+  grants:
     output: true
     permalink: /:collection/:path/
   projects:
-    output: true
-    permalink: /:collection/:path/
-  expertises:
     output: true
     permalink: /:collection/:path/
   talks:
@@ -224,10 +221,19 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _publications
+  # _research
   - scope:
       path: ""
-      type: publications
+      type: research
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
+  # _grants
+  - scope:
+      path: ""
+      type: grants
     values:
       layout: single
       author_profile: true
@@ -237,15 +243,6 @@ defaults:
   - scope:
       path: ""
       type: projects
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _expertises
-  - scope:
-      path: ""
-      type: expertises
     values:
       layout: single
       author_profile: true

@@ -1,7 +1,7 @@
 ---
 title: "High throughput error corrected Nanopore single cell transcriptome sequencing"
-collection: publications
-permalink: /publication/2020-scNaUMI
+collection: research
+permalink: /research/2020-scNaUMI
 excerpt: 'Droplet-based high throughput single cell sequencing techniques tremendously advanced our insight into cell-to-cell heterogeneity. However, those approaches only allow analysis of one extremity of the transcript after short read sequencing. In consequence, information on splicing and sequence heterogeneity is lost. To overcome this limitation ...'
 date: 2020-08-12
 venue: 'Nature Communications'
