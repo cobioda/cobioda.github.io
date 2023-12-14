@@ -27,7 +27,7 @@ CoBiODA is the Bioinformatics Hub of the Institute of Molecular and Cellular Pha
 
 <table cellspacing="0" cellpadding="0" border="0">
 <tr>
-  <td width="20%"><img src="/images/test.jpg" alt="truchi" title="truchi" width="200" /></td>
+  <td width="20%"><img src="/images/bio-photo-2.jpg" alt="truchi" title="truchi" width="200" /></td>
   <td width="80%" valign="top">CDD UniCA</td>
 </tr>
 </table>
@@ -35,7 +35,7 @@ CoBiODA is the Bioinformatics Hub of the Institute of Molecular and Cellular Pha
 <table cellspacing="0" cellpadding="0" border="0">
 <tr>
   <td width="20%"><img src="/images/benkhedher.jpg" alt="benkhedher" title="benkhedher" width="150" /></td>
-  <td width="80%" valign="top">CDD in Bernard Mari and Georges Vassaux team</td>
+  <td width="80%" valign="top">CDD in Bernard Mari and Georges Vassaux team working on a BPI granted project concerning the setup of consolidate an existing proof of concept to produce an in vitro test for the identification of non-genotoxic carcinogens (NGTxC), by combining the latest generation genomics tools and innovative AI approaches.</td>
 </tr>
 </table>
 

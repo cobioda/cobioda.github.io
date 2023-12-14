@@ -9,8 +9,12 @@ toc: true
 {% include base_path %}
 
 
-CoBiODA Bioinformatics Hub allows access to a complex technical infrastructure for computation and statistical analysis described bellow.
+CoBiODA Bioinformatics Hub allows access to a complex technical infrastructure on which is built the data flow for computation and statistical analys of omics data.
 
+
+![data flow picture](/images/dataflow.png "data flow picture"){: style="float: left"}
+
+<br><br>
 
 ## UCA GenomiX Bego (march 2022) and Carra (feb. 2019) statistical server
 
