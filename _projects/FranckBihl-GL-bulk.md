@@ -1,7 +1,7 @@
 ---
-title: "F.Bihl (GL), public clinical and bulk RNA-seq data (Nephropathies)"
-excerpt: "F.Bihl (GL), public clinical and bulk RNA-seq data (Nephropathies)"
+title: "Team GL (F.Bihl), public clinical and bulk RNA-seq data (Nephropathies)"
+excerpt: ""
 collection: projects
-date: 2023-12-14
+date: 2023-09-22
 excerpt: ''
 ---

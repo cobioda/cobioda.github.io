@@ -1,7 +1,7 @@
 ---
-title: "Juliette (LD), organizing and analysing Live Mouse Tracker data, set up with ANIMEX"
-excerpt: "Juliette (LD), organizing and analysing Live Mouse Tracker data, set up with ANIMEX"
+title: "Team LD (Juliette), organizing and analysing Live Mouse Tracker data, set up with ANIMEX"
+excerpt: ""
 collection: projects
-date: 2023-12-14
+date: 2023-09-22
 excerpt: ''
 ---

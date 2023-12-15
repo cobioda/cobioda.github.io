@@ -1,7 +1,7 @@
 ---
-title: "A.Gay, (Proteomics platform), testing workflow analysis of proteomics data"
-excerpt: "A.Gay, (Proteomics platform), testing workflow analysis of proteomics data"
+title: "Proteomics platform (A.Gay), testing workflow analysis of proteomics data"
+excerpt: ""
 collection: projects
-date: 2023-12-14
+date: 2023-08-10
 excerpt: ''
 ---

@@ -1,7 +1,7 @@
 ---
-title: "D.Debayle, metabolomics data analysis"
-excerpt: "D.Debayle, metabolomics data analysis"
+title: "Proteomics platform (D.Debayle), metabolomics data analysis"
+excerpt: ""
 collection: projects
-date: 2023-12-14
+date: 2023-09-01
 excerpt: ''
 ---

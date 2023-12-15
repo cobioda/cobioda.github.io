@@ -1,7 +1,7 @@
 ---
-title: "Nicolas (FL), public scRNA-seq data (expression of Kcnk12/13 in a mouse model of neuropathy)"
-excerpt: "Nicolas (FL), public scRNA-seq data (expression of Kcnk12/13 in a mouse model of neuropathy)"
+title: "Team FL (Nicolas), public scRNA-seq data (expression of Kcnk12/13 in a mouse model of neuropathy)"
+excerpt: ""
 collection: projects
-date: 2023-12-14
+date: 2023-07-10
 excerpt: ''
 ---

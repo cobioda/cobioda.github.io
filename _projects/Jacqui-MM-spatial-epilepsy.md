@@ -1,7 +1,7 @@
 ---
-title: "Jacqui (MM), supporting the analysis of transcriptomics data (Epilepsy project)"
-excerpt: "Jacqui (MM), supporting the analysis of transcriptomics data (Epilepsy project)"
+title: "Team MM (Jacqui), supporting the analysis of transcriptomics data (Epilepsy project)"
+excerpt: ""
 collection: projects
-date: 2023-12-14
+date: 2023-06-12
 excerpt: ''
 ---

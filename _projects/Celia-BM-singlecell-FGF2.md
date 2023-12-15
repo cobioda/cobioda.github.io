@@ -1,7 +1,7 @@
 ---
-title: "Célia (BM), in-house generated scRNA-seq data (Blocking FGF2 on IPF-derived fibroblasts)"
-excerpt: "Célia (BM), in-house generated scRNA-seq data (Blocking FGF2 on IPF-derived fibroblasts)"
+title: "Team BM (Célia), in-house generated scRNA-seq data (Blocking FGF2 on IPF-derived fibroblasts)"
+excerpt: ""
 collection: projects
-date: 2023-12-14
+date: 2023-12-01
 excerpt: ''
 ---

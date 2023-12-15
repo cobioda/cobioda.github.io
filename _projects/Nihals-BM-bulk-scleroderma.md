@@ -1,7 +1,7 @@
 ---
-title: "Nihals (BM), in-house generated bulk RNA-seq data (Systemic scleroderma)"
-excerpt: "Nihals (BM), in-house generated bulk RNA-seq data (Systemic scleroderma)"
+title: "Team BM (Nihals), in-house generated bulk RNA-seq data (Systemic scleroderma)"
+excerpt: ""
 collection: projects
-date: 2023-12-14
+date: 2023-07-22
 excerpt: ''
 ---

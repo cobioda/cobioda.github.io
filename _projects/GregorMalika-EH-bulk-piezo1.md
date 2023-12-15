@@ -1,7 +1,7 @@
 ---
-title: "Gregor et Malika (EH), public bulk RNA-seq data (effect of Piezo1 mutations and activation)"
-excerpt: "Gregor et Malika (EH), public bulk RNA-seq data (effect of Piezo1 mutations and activation)"
+title: "Team HE (Gregor et Malika), public bulk RNA-seq data (effect of Piezo1 mutations and activation)"
+excerpt: ""
 collection: projects
-date: 2023-12-14
+date: 2023-10-05
 excerpt: ''
 ---
