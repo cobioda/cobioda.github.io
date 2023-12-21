@@ -12,7 +12,7 @@ toc: true
 CoBiODA Bioinformatics Hub allows access to a complex technical infrastructure on which is built the data flow for computation and statistical analys of omics data.
 
 
-![data flow picture](/images/dataflow.png "data flow picture"){: style="float: left"}
+![IPMC data flow](/images/ipmc_data_flow.png "IPMC data flow"){: style="float: left"}
 
 <br><br>
 
