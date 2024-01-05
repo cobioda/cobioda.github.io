@@ -1,5 +1,5 @@
 ---
-title: "L'exploration de données single-cell RNA-seq"
+title: "Exploring single-cell RNA-seq data"
 excerpt: ""
 collection: guidelines
 date: 2023-11-27
@@ -8,214 +8,213 @@ date: 2023-11-27
 <i>Author: Marin Truchi</i>
 
 
-L’essor du single-cell RNA-seq a rapidement permis de dépasser la principale limite du "bulk" RNA-seq : passer d’une [résolution tissulaire à la résolution cellulaire](/guidelines/231101_MT_scRNAseq_introduction "Introduction au scRNA-seq"). Il a ainsi redéfini l’hétérogénéité des tissus biologiques en condition physiologique, par la caractérisation précise des profils d’expression de types cellulaires connus et par la mise en évidence de types cellulaires ou d’états cellulaires intermédiaires de processus de développement et de différenciation jusque là inconnus. Le scRNA-seq a également démontré la nécessité de prendre en compte l’hétérogénéité cellulaire dans l’étude des variations transcriptomiques induites par des pathologies, des stimuli, ou des modifications génétiques.
+# Exploring single-cell RNA-seq data
 
-En permanente évolution depuis le début des années 2010, le single-cell RNA-seq est aujourd'hui une technologie mature en termes de protocoles et d’outils d’analyse. Elle s’est ainsi installée comme un nouveau standard de résolution pour la génomique fonctionnelle dont l'application massive et toujours croissante concerne la plupart des systèmes biologiques étudiés à travers le monde.
+The emergence of single-cell RNA-seq has rapidly overcome the main limitation of bulk RNA-seq: the need to move from [tissue resolution to cellular resolution](https://cobioda.github.io/guidelines/231101_MT_scRNAseq_introduction/ "Introduction to scRNA-seq"). It has thus redefined the heterogeneity of biological tissues under physiological conditions, through the precise characterization of the expression profiles of known cell types, and the identification of previously unknown cell types or intermediate cell states in developmental and differentiation processes. scRNA-seq has also demonstrated the need to take cellular heterogeneity into account when studying transcriptomic variations induced by pathologies, stimuli or genetic modifications.
+
+Constantly evolving since the early 2010s, single-cell RNA-seq is now a mature technology in terms of protocols and analysis tools. It has thus established itself as a new standard of resolution for functional genomics, whose massive and ever-growing application concerns most biological systems studied worldwide.
 
 <figure>
   <img src="/images/scRNAseq.PNG" alt="scRNA-seq PubMed"/>
-  <figcaption>L'essor du single-cell RNA-seq</figcaption>
+  <figcaption>The emergence of single-cell RNA-seq</figcaption>
 </figure>
 
 
-## Une quantité considérable de données en libre accès
-Cette application massive vise notamment à constituer des "atlas cellulaire", dont la quantité et la répartition histologique des échantillons séquencées permet l'identification et la caractérisation moléculaire précise de l'ensemble des populations cellulaires présentes dans le tissu d'intérêt. Un grand nombre de tissus ont ainsi été cartographiés dans des atlas cellulaires d'organes individuels, voir pour certains dans des atlas issus de collaborations internationales à l'échelle d'organismes complets, tel que le [Human Cell Atlas](https://www.humancellatlas.org/ "The Human Cell Atlas") ou la [Tabula Muris](https://tabula-muris.ds.czbiohub.org/ "Tabula Muris"). En plus de ces atlas physiologiques, certains ont été générés à partir de tissus pathologiques issus de modèles d'études ou d’échantillons cliniques ([Cancers](https://ngdc.cncb.ac.cn/cancerscem/index "Cancer Single-cell Expression Map"), [Alzheimer](https://cellxgene.cziscience.com/collections/1ca90a2d-2943-483d-b678-b809bf464c30 "Seattle Alzheimer’s Disease Brain Cell Atlas"), [IPF](http://www.ipfcellatlas.com/ "IPF Cell Atlas")).
+## A wealth of open-access data
+Its widespread application aims in particular to create "cell atlases", in which the quantity and histological distribution of sequenced samples enable the identification and precise molecular characterization of all cell populations present in the tissue of interest. A large number of tissues have been mapped in cellular atlases of individual organs, or on the scale of entire organisms in atlases produced by international collaborations, such as the [Human Cell Atlas](https://www.humancellatlas.org/ "The Human Cell Atlas") or the [Tabula Muris](https://tabula-muris.ds.czbiohub.org/ "Tabula Muris"). In addition to these physiological atlases, some have been generated from pathological tissues derived from study models or clinical samples ([Cancers](https://ngdc.cncb.ac.cn/cancerscem/index "Cancer Single-cell Expression Map"), [Alzheimer](https://cellxgene.cziscience.com/collections/1ca90a2d-2943-483d-b678-b809bf464c30 "Seattle Alzheimer's Disease Brain Cell Atlas"), [IPF](http://www.ipfcellatlas.com/ "IPF Cell Atlas")).
 
-L'objectif de ces différents projets étant également de servir de ressource et de référence pour d'autres études, en s'inscrivant dans un contexte de science ouverte et reproductible, leurs données sont (quasiment) systématiquement disponibles en libre accès dans des dépôts publics (c'est généralement une condition requise pour la publication).
+As the aim of these various projects is also to serve as a resource and reference for other studies, in a context of open and reproducible science, their data are (almost) systematically available as open access in public repositories (this is generally a condition required for publication).
 
-Le format sous lequel ces données sont déposées n'est pas totalement standardisé et varie en fonction des laboratoires, mais il s'agit généralement des matrices de comptes bruts de chaque échantillon et éventuellement des méta-données associées (données cliniques, traitement, annotations ...). Dans ce cas, [l'analyse secondaire](/guidelines/231101_MT_scRNAseq_analysis_1 "l'analyse secondaire") des données est à reproduire, même si dans certains cas les matrices de comptes déposées correspondent à des cellules déjà filtrées et annotées. Les auteurs déposent parfois le fichier d'analyse correspondant aux figures de la publication. Les lectures de séquençages brutes ("reads" au format .fastq) sont quant à elles plus rares du fait de leur taille et des éventuels problèmes d'anonymisation des patients que ces données pourraient poser. Du fait de la relative standardisation des processus d'alignement et de comptage, l'absence de ces données ne pose pas réellement de problèmes pour l'exploration de données publiques, qui peut démarrer à partir des matrices de comptes bruts. Les modalités d'accès à ces données sont indiquées dans les sections dédiées ("Data availability"), généralement en fin de publication. Très souvent, il s'agit d'un numéro d'accès à rentrer dans la base de données [GEO](http://www.ipfcellatlas.com/ "Gene Expression Omnibus") (Gene Expression Omnibus), qui garantit une relative standardisation des formats de fichiers et des informations déposés ainsi qu'un accès rapide à leur téléchargement.
+The format in which these data are deposited is not totally standardized and varies from one laboratory to another, but generally consists of the raw count matrices for each sample and eventually associated metadata (clinical data, treatment, annotations, etc.). In this case, [the secondary analysis](https://cobioda.github.io/guidelines/231101_MT_scRNAseq_analysis_1/ "the secondary analysis") of the data must be reproduced, even if in some cases the count matrices submitted correspond to cells that have already been filtered and annotated. Authors sometimes deposit the analysis file corresponding to the figures in the publication. Reads of raw sequencing (.fastq format) are rarer, due to their size and the potential problems of patient anonymization that such data could cause. Given the relative standardization of alignment and counting processes, the absence of these raw sequencing data does not pose any real problems for public data mining, which can start with raw count matrices. Details of how to access these data are given in dedicated sections ("Data availability"), usually at the end of the publication. Very often, this involves an access number to be entered into the [GEO] database (http://www.ipfcellatlas.com/ "Gene Expression Omnibus"), which guarantees a relative standardization of file formats and deposited information, as well as rapid access to their download.
 
-De plus, il est de plus en plus exigé que l'accessibilité aux données s'accompagnent d'une accessibilité aux codes et aux versions de logiciels/packages ayant permis l'analyse et la production de figures, notamment via la plateforme [Github](https://docs.github.com/en/get-started/quickstart/hello-world "Github"). Certains groupes accompagnent même leur publication de portails et d'application web interactives afin de faciliter l'accès à leurs données. Si ces ressources permettent de se faire une première idée sur les données, leur exploitation est limitée par le type et le nombre d'outils de visualisation qu'ils proposent.
+Moreover, it is increasingly required that access to data be accompanied by access to the codes and versions of software/packages that have enabled the analysis and production of figures, notably via the [Github] platform (https://docs.github.com/en/get-started/quickstart/hello-world "Github"). Some groups even provide interactive web applications to facilitate access to their data. While these resources give an overview of the dataset, their use is limited by the type and number of visualization tools they provide.
+
+## Find a public dataset
+While access to data is generally straightforward, finding a public dataset corresponding to a biological system of interest can prove more complex due to the sheer number of pre-existing and emerging studies, which prevents the formation and maintenance of a unique database cataloguing all available datasets. Indeed, while several databases have been created ([PanglaoDB](https://panglaodb.se/index.html "PanglaoDB"), [scRNASeqDB](https://bioinfo.uth.edu/scrnaseqdb/ "scRNASeqDB"), [scNavigator](https://artyomovlab.wustl.edu/scn/ "scNavigator"), [DRscDB](https://www.flyrnai.org/tools/single_cell/web/"DRscDB"), [single cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/home "single cell Expression Atlas"), [Single Cell Portal](https://singlecell.broadinstitute.org/single_cell "Single Cell Portal")), they only bring together a fraction of published datasets, and most of them are no longer kept up to date.
+
+Actually, the best way to find a relevant dataset is to do a keyword search ("organism" + "organ" + "model" + "single-cell RNA-seq"), in pubmed, GEO or directly in google.
 
 
-## Trouver un dataset publique
-Si l'accès aux données est généralement simple, trouver un dataset publique correspondant à un système biologique d'intérêt peut s'avérer plus complexe de par la quantité d'études préexistantes et émergentes, qui empêche la formation et la maintenance d'une base de données publique unique. En effet, si plusieurs bases de données répertoriant des datasets single-cell RNA-seq ont été créées ([PanglaoDB](https://panglaodb.se/index.html "PanglaoDB"), [scRNASeqDB](https://bioinfo.uth.edu/scrnaseqdb/ "scRNASeqDB"), [scNavigator](https://artyomovlab.wustl.edu/scn/ "scNavigator"), [DRscDB](https://www.flyrnai.org/tools/single_cell/web/ "DRscDB"), [single cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/home "single cell Expression Atlas"), [Single Cell Portal](https://singlecell.broadinstitute.org/single_cell "Single Cell Portal")), elles ne rassemblent qu'une fraction des datasets publiés et ne sont plus maintenues à jour.
+# Case study: expression of Kcnk12 and Kcnk13 transcripts in dorsal root ganglia in a neuropathic pain mouse model
 
-Le meilleur moyen de trouver le dataset adéquat consiste plutôt à faire une recherche par mots clés ("organisme" + "organe" + "modèle" + "single-cell RNA-seq"), dans pubmed, GEO ou directement dans google.
+Nicolas Gilbert, a doctoral student in Florian Lesage's team, is studying the THIK2 and THIK1 potassium channels, encoded by the KCNK12 and KCNK13 genes, which are notably expressed in dorsal root ganglion (**DRG**) and whose role is poorly known. Nicolas and his team hypothesize that they may play a role in inflammation and pain. To characterize the expression of these two genes in physiological DRG and in a neuropathic pain model induced by sciatic lesions, we searched for a corresponding public single-cell RNA-seq dataset.
 
+## Step 1: searching for a dataset
 
-# Cas concret : expression des transcrits Kcnk12 et Kcnk13 dans les ganglions de la racine dorsale dans un modèle neuropathique murin
-
-Nicolas Gilbert, doctorant dans l'équipe de Florian Lesage, étudie les canaux potassiques THIK2 et THIK1, encodés par les gènes KCNK12 et KCNK13, notamment exprimés dans les ganglions de la racine dorsale (Dorsal root ganglion ou **DRG**) et dont le rôle est peu connu. Nicolas et son équipe émettent l'hypothèse qu'ils pourraient jouer un rôle dans l'inflammation et la douleur. Afin de caractériser l'expression de ces deux gènes au sein des DRG physiologiques et dans un modèle neuropathique induits par des lésions sciatiques, nous avons cherché un dataset single-cell RNA-seq public correspondant.
-
-## Etape 1 : recherche du dataset
-
-La recherche google suivante : "Dorsal root ganglion neuropathic model single-cell RNA-seq" référence plusieurs publications, dont une revue récente faisant le point sur les différents datasets single-cell RNA-seq, ce qui facilite grandement le choix de celui à explorer.
+The following google search: "Dorsal root ganglion neuropathic pain model single-cell RNA-seq" references several publications, including a recent review summarizing the various suitable single-cell RNA-seq datasets, making it much easier to choose which one to explore.
 
 <figure>
   <img src="/images/DRG_papers.PNG" alt="DRG_papers"/>
 </figure>
 
-Plus de 11 publications caractérisant l'hétérogénéité cellulaire des DRG par utilisation du single-cell RNA-seq sont ainsi répertoriées, chacune étant spécifique de par le modèle d'étude et la technologie de séquençage employés. Parmi ces publications, 4 d'entre elles présentent des caractéristiques complémentaires les rendant particulièrement intéressantes à explorer :
+Over 11 publications characterizing cellular heterogeneity in DRG using single-cell RNA-seq are thus listed, each specific in terms of the study model and employed sequencing technology. Among these publications, 4 present complementary characteristics making them particularly interesting to explore :
 
-#
 1. Wang, K., Wang, S., Chen, Y., Wu, D., Hu, X., Lu, Y., et al. (2021). Single-cell transcriptomic analysis of somatosensory neurons uncovers temporal development of neuropathic pain. Cell Res.
 
-→ Les auteurs de cette étude ont réalisé un suivi dynamique des modulations transcriptomiques induites par des lésions sciatiques par single-cell RNA-seq basée sur [l’isolement par droplets](/guidelines/231101_MT_scRNAseq_introduction "isolement par droplets"). Ce modèle de neuropathie (Spared nerve injury ou SNI) étant utilisé expérimentalement par Nicolas et son équipe, ce jeu de données est le plus pertinent pour caractériser l'expression de Kcnk12 et Kcnk13 dans les DRG en condition physiologique et pathologique.
+→ The authors of this study carried out dynamic monitoring of transcriptomic modulations induced by sciatic lesions by single-cell RNA-seq based on [droplet isolation](https://cobioda.github.io/guidelines/231101_MT_scRNAseq_introduction/ "droplet isolation"). As this model of neuropathic pain (Spared nerve injury or SNI) is used experimentally by Nicolas and his team, this dataset is the most relevant for characterizing Kcnk12 and Kcnk13 expression in DRG under physiological and pathological conditions.
 
-#
 2. Jung M, Dourado M, Maksymetz J, Jacobson A, Laufer BI, Baca M, Foreman O, Hackos DH, Riol-Blanco L, Kaminker JS. Cross-species transcriptomic atlas of dorsal root ganglia reveals species-specific programs for sensory function. Nat Commun. 2023
 
-→ Il s'agit d'un atlas visant à répertorier les populations cellulaires des DRG chez l'homme et dans des modèles d'études (souris, cobaye, macaque), de sorte à déterminer les signatures conservées ou espèces-spécifiques et à homogénéiser leur nomenclature. C'est donc une ressource intéressante pour mettre en perpectives les signatures trouvées dans le dataset de Wang et al. De plus, les auteurs proposent un outil de visualisation de l'expression des gènes dans les différents modèles via une application web.
+→ This is an atlas that aims to list DRG cell populations in humans and in study models (mouse, guinea pig, macaque), in order to determine conserved or species-specific signatures and homogenize their nomenclature. It is therefore an interesting resource for putting into perspective the signatures found in the dataset of Wang et al. In addition, the authors propose a tool for visualizing gene expression in the various models via a web application.
 
-#
 3. Li, C. L., Li, K. C., Wu, D., Chen, Y., Luo, H., Zhao, J. R., et al. (2016). Somatosensory neuron types identified by high-coverage single-cell RNA-sequencing and functional heterogeneity. Cell Res.
 
-→ Ce jeu de données plus ancien à la particularité d'avoir été produit par le même laboratoire que celui de Wang et al., mais via une approche single-cell RNA-seq alternative permettant de séquencer seulement quelques centaines de cellules mais avec une profondeur bien supérieure à celle obtenue via l'approche d’isolement par droplets. Les données issues de ce type de protocole ("[Smart-seq](https://www.nature.com/articles/s41587-020-0497-0 "Smart-seq v3")"), bien que rares, peuvent s'avérer précieuses à explorer pour notamment observer l'expression de transcrits peu abondants ou présentant une hétérogénéité d'isoformes, ce qui pourrait être le cas de Kcnk12 et Kcnk13.
+→ This older dataset was produced by the same laboratory as Wang et al. but using an alternative single-cell RNA-seq approach that allows only a few hundred cells to be sequenced, but with much greater depth than that obtained via the droplet isolation approach. Data from this type of protocol ("[Smart-seq](https://www.nature.com/articles/s41587-020-0497-0 "Smart-seq v3")"), although rare, may prove valuable to explore, particularly for observing the expression of transcripts with low abundance or isoform heterogeneity, which could be the case for Kcnk12 and Kcnk13.
 
-#
 4. Tavares-Ferreira, D., Shiers, S., Ray, P. R., Wangzhou, A., Jeevakumar, V., Sankaranarayanan, I., et al. (2022). Spatial transcriptomics of dorsal root ganglia identifies molecular signatures of human nociceptors. Sci. Transl. Med.
 
-→ Ce dernier dataset propose des données de [transcriptomique spatiale](https://www.nature.com/articles/s41592-022-01409-2 "Review transcriptomique spatiale"), permettant de visualiser l'expression *in situ* de KCNK12 et KCNK13 sur des coupes de DRG humains. En apportant la dimension spatiale, ces données pourrait compléter l'exploration de l'expression de ces deux gènes.
-#
-## Etape 2 : Téléchargement et inspection des données de Wang et al., Cell Res. 2021.
-La section "Data Availability" de la publication indique que les données analysées dans l'étude sont stockées dans GEO et téléchargeables via le numéro d'accès indiqué.
+→ This latest dataset provides [spatial transcriptomics data](https://www.nature.com/articles/s41592-022-01409-2 "Review spatial transcriptomics"), enabling visualization of the *in situ* expression of KCNK12 and KCNK13 on human DRG sections. By adding the spatial dimension, these data could complete the exploration of the expression of these two genes.
+
+
+## Step 2 : Download and inspection of data from Wang et al, Cell Res. 2021.
+The "Data Availability" section of the publication indicates that the data analyzed in the study are stored in GEO and downloadable via the access number indicated.
 
 <figure>
   <img src="/images/GSE_WANG.PNG" alt="GSE Wang et al."/>
 </figure>
 
-Une fois le numéro d'accès rentré, nous sommes redirigés vers la page web de la série de données associées à l'étude. Cette page web récapitule les informations principales de la publication (titre, auteur, type d'expérience, résumé), et renseigne sur le design expérimental. En bas de la page, un tableau répertorie les fichiers correspondant aux données déposées, avec leur nom, leur taille et leur format. Normalement, le nom de ces fichiers et les informations indiquées sur la page doivent permettre de facilement faire correspondre chaque fichier à un échantillon ou à une partie de l'analyse présentée dans la publication.
-Or, dans ce cas précis, la nomenclature des fichiers déposées par les auteurs n'est pas explicite, hormis pour ceux qui correspondent aux données Smart-seq de Li et al., qui ont été réanalysés pour l'occasion.
+Once the access number has been entered, we are redirected to the web page of the data series associated to the study. This web page summarizes the main publication information (title, author, type of experiment, abstract), and provides information on the experimental design. At the bottom of the page, a table lists the files corresponding to the deposited data, with their name, size and format. Normally, the name of these files and the information given on the page should make it easy to match each file to a sample or to a part of the analysis presented in the publication.
+In this case, however, the nomenclature of the files submitted by the authors is not explicit, except for those corresponding to the Smart-seq data of Li et al. which have been reanalyzed for the purpose.
 
 <figure>
   <img src="/images/GSE_FILES_WANG.PNG" alt="Data Wang et al."/>
 </figure>
 
-Les données originales de l'étude sont réparties en 4 datasets, avec à chaque fois un fichier texte correspondant aux comptes bruts et un fichier texte correspondant aux méta-données. Les deux premiers datasets sont également associés à un fichier "barcodes" qui liste les barcodes cellulaires des droplets sélectionnées. Après inspection des méta-données et relecture de la publication, chaque dataset correspond à une expérience de séquençage distincte, ce qui explique l'hétérogénéité des formats et de la structure des méta-données :
+The original study data are divided into 4 datasets, each with a text file corresponding to the raw counts and a text file corresponding to the metadata. The first two datasets are also associated with a "barcodes" file listing the cellular barcodes of the selected droplets. After inspection of the metadata and rereading of the publication, each dataset corresponds to a distinct sequencing experiment, which explains the heterogeneity of the formats and structure of the metadata:
 
-1. Le premier dataset correspond à la première expérience, où des échantillons de DRG ont été séquencés en condition physiologique, ainsi que 6h, 24, 2 jours, 7 jours et 14 jours après des lésions sciatiques (35894 cellules).
+1. The first dataset corresponds to the first experiment, where DRG samples were sequenced in physiological condition, as well as 6h, 24h, 2 days, 7 days and 14 days after sciatic lesions (35894 cells).
 
-2. Le deuxième dataset correspond à une deuxième expérience, où d'autres échantillons de DRG ont été séquencés en condition physiologique, ainsi que 6h ou 24h après des lésions sciatiques (27248 cellules).
+2. The second dataset corresponds to a second experiment, where further DRG samples were sequenced in physiological condition, as well as 6h or 24h after sciatic lesions (27248 cells).
 
-3. Le troisième dataset correspond à une troisième expérience, qui repète la première avec les mêmes conditions (35974 cellules).
+3. The third dataset corresponds to a third experiment, repeating the first with the same conditions (35974 cells).
 
-4. Le dernière dataset correspond à une quatrième expérience, où les auteurs ont reséquencés des échantillons de DRG physiologiques et ont ajouté des échantillons de DRG séquencés 28 jours après lésion sciatique (15127 cellules).
+4. The final dataset corresponds to a fourth experiment, in which the authors resequenced physiological DRG samples and added DRG samples sequenced 28 days after sciatic injury (15127 cells).
 
-La complexité du design du dataset global, son volume, ainsi que l'hétérogénéité de structures des méta-données et des dimensions des matrices des sous-datasets qui le composent, indiquaient que dans un premier temps il était plus pertinent de restreindre l'analyse au premier dataset.
+The complexity of the overall dataset design, its volume, as well as the heterogeneity of metadata structures and matrix dimensions of its sub-datasets, indicated that it was more relevant to restrict the analysis to the first dataset at this stage.
 
+## Step 3 : Re-analysis of the first dataset
 
-## Etape 3 : Ré-analyse du premier dataset
+### 1. Loading data into Rstudio and creating an analysis "object"
+Analysis of single-cell RNA-seq data from count matrices is carried out in a software environment that enables tool libraries to be loaded, scripts to be edited and compiled, variables to be visualized and data to be represented graphically, all in the same programming language. For the R language, analysis of single-cell RNA-seq data is carried out in the Rstudio development environment (IDE), and is based in particular on the [seurat package](https://satijalab.org/seurat/ "seurat").
 
-### 1. Charger les données dans Rstudio et créer un "objet" d'analyse
-L’analyse des données single-cell RNA-seq à partir des matrices de compte se réalise dans un environnement logiciel permettant de charger des librairies d'outils, d'éditer et de compiler des scripts, de visualiser les variables et de représenter graphiquement les données, le tout dans un même language de programmation. Pour le language R, l’analyse des données single-cell RNA-seq est réalisé dans l'environnement de développement (IDE) Rstudio, et se base notamment sur la librairie [seurat](https://satijalab.org/seurat/ "seurat").
-
-Dans ces environnements, les données single-cell RNA-seq sont structurées dans un format qui permet à la fois de stocker les matrices de comptes [gènes x cellules] brutes et transformées, ainsi que les méta-données sur les gènes (Ensembl ID, Symbole) et sur les cellules (Nombre de comptes total, échantillon d'origine, type cellulaire annoté etc), ordonnées en fonction de leur position dans la matrice de comptes. Au fur et à mesure de l'analyse, d'autres informations seront enregistrées dans cet "objet", notamment les résultats des réductions de dimensions.
+In these environments, single-cell RNA-seq data are structured in a format that stores both raw and transformed [genes x cells] count matrices, as well as gene (Ensembl ID, Symbol) and cell (total count, original sample, annotated cell type etc.) metadata, ordered according to their position in the count matrix. As the analysis progresses, further information will be stored in this "object", including the results of dimension reductions.
 
 <figure>
-  <img src="/images/sce_object.PNG" alt="Objet d'analyse"/>
+  <img src="/images/sce_object.PNG" alt="Analysis object"/>
 </figure>
 
-Tiré de [Orchestrating Single-Cell Analysis with Bioconductor](http://bioconductor.org/books/3.13/OSCA/ "Orchestrating Single-Cell Analysis with Bioconductor")
+From [Orchestrating Single-Cell Analysis with Bioconductor](http://bioconductor.org/books/3.13/OSCA/ "Orchestrating Single-Cell Analysis with Bioconductor")
 
-Une fois importés, les fichiers textes correspondant à la matrice de comptes du premier dataset et aux méta-données associées sont mises en forme dans un object seurat appelé "WangDRG". Cet objet contient la matrice d'expression de 23904 gènes dans 35894 cellules, ainsi que la table des méta-données qui ont été enregistrées par les auteurs. Elles se répartissent en 8 variables qui pour chacune des 35894 cellules renseigne notamment son identifiant (barcode), sa condition, et le type cellulaire qui a été annoté.
+Once imported, the text files corresponding to the first dataset's count matrix and associated metadata are formatted into a seurat object called "WangDRG". This object contains the expression matrix of 23904 genes in 35894 cells, as well as the table of metadata saved by the authors. The metadata table is divided into 8 variables, which provide in particular for each of the 35894 cells its identifier (barcode), its condition, and the annotated cell type.
 
 <figure>
   <img src="/images/Wang_seurat_obj.PNG" alt="WangDRG seurat object"/>
 </figure>
 
-### 2. Transformer les données et réduire leur dimensionalité pour leur visualisation.
-En l'état, les données ne sont pas encore exploitable pour visualiser l'expression de nos gènes d'intérêts. En effet, les comptes brutes ne tiennent pas compte des éventuelles fluctuations de la profondeur de séquençage entre les différents échantillons, ou des autres sources de variabilité technique, ce qui risque de biaiser à la fois la quantification de l'expression des gènes ainsi que la projection des données en dimension réduite. Pour y remédier, il faut procéder à une normalisation puis à une intégration des données, avant de réaliser l'ACP puis leur projection en 2 dimensions du (voir [l'article](/guidelines/231101_MT_scRNAseq_analysis_1 "seurat") sur l'analyse de données). Une fois ces étapes effectuées, l'exploration et la visualisation des données peut débuter.
+### 2. Transform the data and reduce its dimensionality for visualization.
+As it stands, the data are not yet usable for visualizing the expression of our genes of interest. Indeed, the raw counts do not take into account possible variations in sequencing depth between different samples, or other sources of technical variability, which may bias both the quantification of gene expression and the projection of the data in reduced dimensions. To overcome this, the data must be normalized and then integrated, before performing PCA and then 2-dimensional projection (see [the article](https://cobioda.github.io/guidelines/231101_MT_scRNAseq_analysis_1/ "seurat") on data analysis). Once these steps have been completed, data exploration and visualization can begin.
 
-### 3. Visualiser le dataset et l'expression de Kcnk12/Kcnk13.
+### 3. Visualize the dataset and Kcnk12/Kcnk13 expression.
 
-La première représentation du dataset que l'on peut proposer est la **projection des données en 2 dimensions** via un algorithme type UMAP, toutes conditions réunies.
+The first representation of the dataset we can propose is the **projection of the data in 2 dimensions** via a UMAP algorithm, all conditions gathered.
 
-Les cellules des DRG se regroupent selon leur profil d'expression en 9 populations principales : neurones, cellules satellites gliales, cellules de Schwann, cellules endothéliales vasculaires (VEC), cellules endothéliales vasculaires capillaires (VECC), cellules musculaires lisses vasculaires (VSMC),  fibroblastes, cellules immunitaires et globules rouges (RBC).
-Certaines populations sont particulièrement hétérogènes en termes de signature transcriptomique, notamment les neurones. En effet, les auteurs de Wang et al. proposent une classification de 20 populations neuronales sur la base de l'expression de certains marqueurs.
+DRG cells are grouped according to their expression profile into 9 main populations: neurons, glial satellite cells, Schwann cells, vascular endothelial cells (VEC), vascular capillary endothelial cells (VECC), vascular smooth muscle cells (VSMC), fibroblasts, immune cells and red blood cells (RBC).
+Some populations are particularly heterogeneous in terms of transcriptomic signature, notably neurons. Indeed, the authors of Wang et al. propose a classification of 20 neuronal populations based on the expression of certain markers.
 
 <figure>
   <img src="/images/UMAP_Wang_Neurons.PNG" alt="UMAP_Wang_Neurons"/>
 </figure>
 
 
-Dans une représentation en "**DotPlot**" de l'expression moyenne normalisée des gènes codants pour des canaux potassiques de type K2P détectés dans le dataset, on observe que Kcnk12 est celui le plus exprimé dans les neurones des DRG. Cette représentation nous indique également le pourcentage d'expression des transcrits dans chaque population, c'est à dire la proportion de cellules dans lesquelles on détecte au moins 1 molécule d'ARNm vis à vis de la population totale. On remarque ici la forte spécificité d'expression de Kcnk12, qui est exprimé d'en environ 50% des neurones contre moins de 2% dans les autres populations. Quant à Kcnk13, son expression est plus faible que Kcnk12 dans les neurones, et on détecte un léger signal dans les cellules immunitaires.
+In a "**DotPlot**" representation of the normalized mean expression of genes coding for K2P-type potassium channels detected in the dataset, we can see that Kcnk12 is the most highly expressed in DRG neurons. This representation also shows the percentage of transcript expression in each population, i.e. the proportion of cells in which at least 1 mRNA molecule is detected relative to the total population. Kcnk12 is highly specific, being expressed in around 50% of neurons, compared with less than 2% in other populations. As for Kcnk13, its expression is weaker than Kcnk12 in neurons, and a slight signal is detected in immune cells.
 
-Il faut noter qu'ici les valeurs d'expression sont centrées et réduites (calcul de z-score ou on retranche la moyenne et divise par l'écart-type), ce qui permet de représenter l'expression de chaque gène à sa propre échelle, et d'éviter ainsi que les gènes les plus exprimés "écrasent" le signal.
+It should be noted that here the expression values are centered and reduced (z-score calculation where the mean is subtracted and divided by the standard deviation), which makes it possible to represent the expression of each gene at its own scale, and thus avoid the most highly expressed genes "crushing" the signal.
 
 <figure>
   <img src="/images/Kcnks_Wang.PNG" alt="Kcnk12, Kcnk13_Wang"/>
 </figure>
 
-Dans cette représentation de l'expression de Kcnk12 et Kcnk13 dans l'espace de dimensions réduites ("**FeaturePlot**"), on observe que ces deux gènes ne sont exprimés que dans une partie des populations neuronales.
+In this representation of Kcnk12 and Kcnk13 expression in reduced-dimensional space ("**FeaturePlot**"), we observe that these two genes are expressed in only a portion of neuronal populations.
 
 <figure>
   <img src="/images/Kcnk12_Kcnk13_Wang.PNG" alt="Kcnk12, Kcnk13_Wang"/>
 </figure>
 
-Afin de documenter plus précisément leur expression dans ces populations et dans les différentes conditions, les étapes suivantes consistaient à réaliser l'intégration de l'ensemble des neurones séquencés par les auteurs dans les différents datasets, puis de comparer les populations identifiées avec celles annotées dans l'atlas cellulaire construit par Jung et al., (Nat Commun. 2023).
+In order to document their expression more precisely in these populations and under the different conditions, the next steps consisted in integrating all the neurons sequenced by the authors in the various datasets, and then comparing the populations identified with those annotated in the cellular atlas constructed by Jung et al., (Nat Commun. 2023).
 
 
-## Etape 4 : Intégration de l'ensemble des 4 datasets et annotation des neurones
+## Step 4: Integration of all 4 datasets and neuron annotation
 
-Après avoir importé les matrices de comptes des 4 datasets, homogénéiser les méta-données et les gènes quantifiées, et sélectionner les cellules correspondant à des neurones, on obtient un jeux de données de 27198 cellules. Une fois les données des différents échantillons normalisées et intégrées, l'objectif est d'annoter les clusters correspondant aux différentes populations neuronales de sorte à donner un sens biologique à la description de l'expression de Kcnk12/Kcnk13.
+After importing the count matrices of the 4 datasets, homogenizing the metadata and the quantified genes, and selecting the cells corresponding to neurons, we obtain a dataset of 27198 cells. Once the data from the different samples have been normalized and integrated, the aim is to annotate the clusters corresponding to the different neuronal populations, in order to give biological meaning to the description of Kcnk12/Kcnk13 expression.
 
-Sur la base des profils d'expression dans l'espace de dimensons réduites obtenu par ACP, on distingue une vingtaine de communautés isolées de manière non supervisée (le nombre de clusters n'est pas prédéfini). Si on projette les annotations originales de Wang et al. sur ces communautés, on remarque que chaque cluster non annoté correspond à peu près à une population définies par ces mêmes auteurs. Cependant, ces annotations sont uniquement réalisées sur la base de l'expression spécifique de gènes, ce qui ne donne aucune information sur la fonction des populations associées.
+On the basis of expression profiles in the reduced-dimensional space obtained by PCA, about twenty isolated communities are distinguished in an unsupervised manner (the number of clusters is not predefined). If we project Wang et al.'s original annotations onto these communities, we see that each unannotated cluster corresponds roughly to a population defined by these authors. However, these annotations are only made on the basis of specific gene expression, which gives no information on the function of the associated populations.
 
 <figure>
-  <img src="/images/Neurons_Annot.PNG" alt="Annotations des Neurones"/>
+  <img src="/images/Neurons_Annot.PNG" alt="Neuron Annotations"/>
 </figure>
 
-Pour y remédier, on peut également se baser sur l'annotation proposée par Jung et al., visant à établir des signatures transcriptomiques faisant consensus entre plusieurs espèces. Les auteurs ont ainsi identifié 5 grandes classes de neurones conservées dans les DRG :
+An alternative approach is the annotation proposed by Jung et al. which seeks to establish consensus transcriptomic signatures across multiple species. The authors thus identified 5 major classes of neurons conserved in DRGs:
 * A-LTMRs (A-fiber low-threshold mechanoreceptors)
 * C-LTMRs (C-fiber low-threshold mechanoreceptors)
 * NPs (non-peptidergic nociceptors)
 * PEPs (peptidergic nociceptors)
 * Cold thermoreceptors
 
-Ces 5 grandes classes sont ensuite divisées en plusieurs sous-types, caractérisées par l'expression de marqueurs spécifiques, pour un total de 11 populations conservées entre mammifères.
+These 5 major classes are further divided into several subtypes, characterized by the expression of specific markers, for a total of 11 mammalian-conserved populations.
 
 <figure>
   <img src="/images/Jung_markers.PNG" alt="Annotations des Neurones de Jung et al."/>
   <figcaption> Jung et al. Cross-species transcriptomic atlas of dorsal root ganglia reveals species-specific programs for sensory function. Nat Commun. 2023 </figcaption>
 </figure>
 
-###
 
-En se basant sur l'expression de ces marqueurs dans le dataset intégré de Wang et al., on retrouve l'ensemble de ces 11 populations, auxquelles s'ajoutent 4 clusters spécifiques du dataset de Wang et al. Parmi ces clusters additionnels, on trouve une population marquée par l'expression spécifique de Rfxp1 ainsi que trois populations exprimant des marqueurs de neurones C-LTMRs, NPs et PEPs, mais surexprimant Atf3 et qui correspondent à des états cellulaires spécifiques des DRG de souris ayant subies des lésions sciatiques.   
+
+Based on the expression of these markers in the integrated dataset of Wang et al., we find all these 11 populations, to which are added 4 specific clusters from the dataset of Wang et al. Among these additional clusters are a population marked by the specific expression of Rfxp1 as well as three populations expressing neuronal markers C-LTMRs, NPs and PEPs, but overexpressing Atf3 and corresponding to specific cellular states of DRG from mice with sciatic lesions.   
 
 <figure>
-  <img src="/images/Jung_on_Wang.PNG" alt="Annotations finale des Neurones de Wang et al."/>
+  <img src="/images/Jung_on_Wang.PNG" alt="Final Neuron Annotations from Wang et al."/>
 </figure>
 
-En effet si on suit l' **évolution des proportions relatives** des différentes sous populations en condition contrôle et au cours de la réponse aux lésions sciatiques, on observe une apparition des sous populations "NP Atf3", "PEP Atf3" et "C-LTMR Atf3" à partir de 24h post-lésions. Ces populations représentent environ 25% des cellules séquencées entre le deuxième et le septième jour post-lésions, puis tendent à disparaître dans les semaines suivantes. Lorsqu'on compare l'évolution des proportions relatives entre chaque sous populations, on remarque que les "NP Atf3" et "C-LTMR Atf3" atteignent un pic autour du deuxième jour, tandis que les "PEP Atf3" l'atteignent plutôt à 7 jours post-lésions. A 14 jours, alors que les proportions de "NP Atf3" et de "C-LTMR Atf3" ont drastiquement diminué, celle des "PEP Atf3" reste élevée à 14 jours. A 28 jours, seule une faible proportion de "PEP Atf3" persiste toujours. Au niveau transcriptomque, ces 3 états cellulaires partagent une signature marquée notamment par l'expression d'*Atf3*, *Sprr1a*, *Sox11*, *Gap43*, *Nts*, *Gadd45a*, *Gal* ou *Cdkn1a*, comme l'indique la **heatmap**.
-Cette signature est décrite dans la littérature comme celle des "[regeneration-associated genes](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4528284/#:~:text=Regeneration%2Dassociated%20gene%20networks.&text=These%20transcription%20factors%20can%20serve,transcription%20of%20other%20hub%20proteins. "regeneration-associated genes")" (RAGs), indispensable à la régénération des axones endommagés.
+Indeed, if we follow the **evolution of the relative proportions** of the different sub-populations in control condition and following the response to sciatic lesions, we observe an appearance of the "NP Atf3", "PEP Atf3" and "C-LTMR Atf3" sub-populations from 24h post-lesions. These populations represent around 25% of the cells sequenced between the second and the seventh post-injury day, then tend to disappear in the following weeks. Comparing the relative proportions of each subpopulation, "NP Atf3" and "C-LTMR Atf3" reached a peak around day 2, while "PEP Atf3" peaked at 7 days post-injury. At 14 days, while the proportions of "NP Atf3" and "C-LTMR Atf3" have fallen drastically, that of "PEP Atf3" remains high. At 28 days, only a small proportion of "PEP Atf3" remains. At transcriptomic level, these 3 cell states share a signature marked in particular by the expression of *Atf3*, *Sprr1a*, *Sox11*, *Gap43*, *Nts*, *Gadd45a*, *Gal* or *Cdkn1a*, as shown in the **heatmap**.
+This signature is described in the literature as that of "[regeneration-associated genes](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4528284/#:~:text=Regeneration%2Dassociated%20gene%20networks.&text=These%20transcription%20factors%20can%20serve,transcription%20of%20other%20hub%20proteins. "regeneration-associated genes")" (RAGs), essential for the regeneration of damaged axons.
 
 <figure>
   <img src="/images/Atf3_subpops.PNG" alt="Focus sous populations surexprimant Atf3"/>
 </figure>
 
 
-## Etape 5 : Visualisation de l'expression de Kcnk12 et Kcnk13
+## Step 5: Visualization of Kcnk12 and Kcnk13 expression
 
-Une fois les différentes populations neuronales annotées, l'expression de Kcnk12 / Kcnk13 peut enfin être visualisée. L'une des représentations graphiques les plus adéquates pour les données single-cell RNA-seq est appelée "**ViolinPlot**. Cette représentation permet de visualiser l'expression d'un unique gène dans chaque cellule du jeux de données, tout en groupant les cellules en fonction de leur annotation (ou de leur échantillon/condition). Le niveau d'expression est représenté sous forme de point (un pour chaque cellule), auquel s'ajoute une courbe de densité qui indique la distribution des comptes et éventuellement un boxplot résumant la médiane, les 1er et 3ème quartile.
+Once the different neuronal populations have been annotated, Kcnk12 / Kcnk13 expression can finally be visualized. One of the most appropriate graphical representations for single-cell RNA-seq data is called **ViolinPlot**. This representation shows the expression of a single gene in each cell of the dataset, while grouping cells according to their annotation (or sample/condition). The expression level is represented as a dot (one for each cell), to which is added a density curve indicating the distribution of counts and possibly a boxplot summarizing the median, 1st and 3rd quartile.
 
 
 <figure>
-  <img src="/images/Kcnk12_Kcnk13_Violin.PNG" alt="expression de Kcnk12 et Kcnk13 "/>
+  <img src="/images/Kcnk12_Kcnk13_Violin.PNG" alt="expression of Kcnk12 and Kcnk13"/>
 </figure>
 
-Pour Kcnk12, son transcrit est exprimé en condition physiologique dans les sous populations de neurones nocicepteurs non-peptidergiques NP1, NP2 et NP3, ainsi que dans la sous population de neurones nocicepteurs peptidergiques PEP1 dans une moindre mesure. On le retrouve également exprimé dans les 3 sous-populations détectées dans les échantillons de DRG de souris ayant subies des lésions sciatiques : "NP Atf3", "PEP Atf3" et "C-LTMR Atf3". L'expression de Kcnk13 est quant à elle globalement plus faible en condition physiologique et semble restreinte aux populations NP1 et C-LTMR. Cependant, elle semble légèrement surexprimée dans les populations neuropathiques équivalentes, soit les "NP Atf3" et les "C-LTMR Atf3".
+For Kcnk12, its transcript is expressed under physiological conditions in the NP1, NP2 and NP3 subpopulations of non-peptidergic nociceptor neurons, as well as in the PEP1 subpopulation of peptidergic nociceptor neurons to a lesser extent. It was also found expressed in the 3 subpopulations detected in DRG samples from mice with sciatic lesions: "NP Atf3", "PEP Atf3" and "C-LTMR Atf3". Kcnk13 expression is generally lower in physiological conditions and appears to be restricted to the NP1 and C-LTMR populations. However, it appears to be slightly over-expressed in equivalent neuropathic pain-specific populations, i.e. "NP Atf3" and "C-LTMR Atf3".
 
 
- Ces profils d'expression suggèrent une surexpression de Kcnk12 et dans une moindre mesure de Kcnk13, dans le modèle de neuropathie. Pour tester cette hypothèse au niveau statistique, l'approche [d'analyse différentielle en pseudobulk](/guidelines/231101_MT_scRNAseq_analysis_2 "L'analyse de données single-cell RNA-seq, Partie 2") paraissait appropriée du fait de la présence de réplicats biologiques dans le dataset intégré.  
+These expression profiles suggest overexpression of Kcnk12, and to a lesser extent Kcnk13, in the neuropathic pain model. To test this hypothesis statistically, the [pseudobulk differential analysis approach](https://cobioda.github.io/guidelines/231101_MT_scRNAseq_analysis_2/ "Single-cell RNA-seq data analysis, Part 2") seemed appropriate, given the availability of biological replicates in the integrated dataset.  
 
-Pour réaliser cette analyse différentielle, les cellules des 3 sous-populations neuropathiques ont été groupées pour chaque échantillon avec leur population physiologique associée (NP1/NP2/NP3 pour les NP Atf3, PEP1/PEP2/PEP3 pour les PEP Atf3 et C-LTMR pour les C-LTMR Atf3). Leurs comptes brutes ont ensuite été aggrégés de sorte à former des pseudobulks. Pour chacun des 3 sous ensembles de neurones (NPs, PEPs et C-LTMRs) on obtient 4 échantillons contrôles (1 pour chaque dataset), 3 échantillons SNI 6h et 3 échantillons SNI 24h (dataset 1,2 et 3), 2 échantillons SNI 2j, SNI 7j et SNI 14j (dataset 1 et 3) et 1 échantillon SNI 28j.
-Pour comparer les échantillons contrôles à un nombre suffisant d'échantillons pathologiques, une condition SNI "pic" a été créée en rassemblant les échantillons pour lesquels on observe les plus fortes proportions de populations associées à la signature RAGs, soit les conditions SNI 24h, SNI 2j et SNI 7j.
+To perform this differential analysis, cells from the 3 neuropathic pain-specific subpopulations were grouped for each sample with their associated physiological population (NP1/NP2/NP3 for Atf3 NPs, PEP1/PEP2/PEP3 for Atf3 PEPs and C-LTMR for Atf3 C-LTMRs). Their raw counts were then aggregated to form pseudobulks. For each of the 3 subsets of neurons (NPs, PEPs and C-LTMRs) we obtained 4 control samples (1 for each dataset), 3 SNI 6h and 3 SNI 24h samples (datasets 1,2 and 3), 2 SNI 2d, SNI 7d and SNI 14d samples (datasets 1 and 3) and 1 SNI 28d sample.
+To compare the control samples with a sufficient number of pathological samples, a "peak" SNI condition was created by grouping together the samples for which the highest proportions of populations associated with the RAGs signature were observed, i.e. the SNI 24h, SNI 2d and SNI 7d conditions.
 
-L'expression différentielle entre les 4 échantillons contrôles et les 7 échantillons SNI "pic", représenté sous forme de **boxplot**, indique que Kcnk12 est statistiquement surexprimé  en condition neuropathique dans les neurones PEP. On observe également une tendance de surexpression de Kcnk13 dans cette même population.
+
+The differential expression between the 4 control samples and the 7 SNI "peak" samples, represented in a **boxplot**, indicates that Kcnk12 is statistically overexpressed in neuropathic pain condition in PEP neurons. A trend of Kcnk13 overexpression is also observed in this same population.
 
 <figure>
-  <img src="/images/DEA_Kcnk1213.PNG" alt="DEA Kcnk12 + Kcnk13 "/>
+  <img src="/images/DEA_Kcnk1213.PNG" alt="DEA Kcnk12 + Kcnk13"/>
 </figure>
 
-Si on regarde les résultats des analyses différentielles réalisées sur chacune des 3 sous populations de neurones, on constate que d'autres gènes codant pour des canaux potassiques de type K2P sont différentiellement exprimés dans le modèle SNI : Kcnk18 est down-régulé dans les PEPs et Kcnk16 est surexprimé dans les 3 sous populations.
+If we look at the results of the differential analyses carried out on each of the 3 neuron subpopulations, we see that other genes encoding K2P-type potassium channels are differentially expressed in the SNI model: Kcnk18 is down-regulated in PEPs and Kcnk16 is over-expressed in all 3 subpopulations.
+
 
 <figure>
   <img src="/images/DEA_K2P.PNG" alt="DEA K2P"/>
 </figure>
 
 
-## Visualisation du dataset intégré via une application web
+## Visualizing the integrated dataset via a web application
 
-Le dataset intégré et analysé correspondant à l'ensemble des neurones des DRG séquencées par Wang et al. est consultable via une [application web](http://carra.ipmc.cnrs.fr:3838/Wang_DRG_neurons/ "application web Wang DRG"). Dans cette application, l'expression des gènes peut être visualisée sous forme de FeaturePlot, de ViolinPlot/Boxplot et de DotPlot/Heatmap, le tout en groupant les cellules par population ou par condition.
+The integrated and analyzed dataset corresponding to all the DRG neurons sequenced by Wang et al. can be viewed via a [web application](http://carra.ipmc.cnrs.fr:3838/Wang_DRG_neurons/ "Wang DRG web application"). In this application, gene expression can be visualized as FeaturePlot, ViolinPlot/Boxplot and DotPlot/Heatmap, with the option of grouping cells by population or condition.

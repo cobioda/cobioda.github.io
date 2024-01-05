@@ -1,5 +1,5 @@
 ---
-title: "Introduction au single-cell RNA-seq"
+title: "From tissue to single-cell scale"
 excerpt: ""
 collection: guidelines
 date: 2023-07-15
@@ -7,68 +7,71 @@ date: 2023-07-15
 
 <i>Author: Marin Truchi</i>
 
-## De l’échelle tissulaire à l’échelle de la cellule unique
 
-Du fait de son rendement, de sa précision et de sa sensibilité, le RNA-seq est un outil puissant pour comparer par analyse différentielle le niveau d’expression de dizaines de milliers de trancrits entre échantillons.
-Néanmoins, afin d'atteindre une quantité d'ARN nécessaire au séquençage (~100 ng), les molécules sont isolées à partir de tissues entiers et de plusieurs dizaines de milliers de cellules. La quantification des ARN après séquençage est donc issus d'une moyenne d'expression à travers les différents types cellulaires du tissu, d’où l’appellation « bulk » RNA-seq. Or, cette hétérogénéité cellulaire biaise :
-* La détection de gènes différentiellement exprimés spécifiques à une fraction restreinte des populations cellulaires
-* L'interprétation de l'analyse différentielle, dans le cas où les modulations transcriptomiques mesurées sont dues aux variations des proportions des types cellulaires prélevés dans le tissu d'un échantillon à l'autre
+# Introduction to single-cell RNA-seq
 
-De plus, la résolution tissulaire des données bulk RNA-seq empêche la description précise de l'expression d'un gène d'intérêt et la caractérisation détaillée d'éventuelles modulations transcriptomiques détectées lors de l'analyse.
-Pour pallier ces lacunes, la décennie 2010 a vu l'explosion des protocoles adaptant le RNA-seq afin de réaliser le séquençage des transcrits à l'échelle de la cellule unique, notamment grâce à des techniques d’isolement des cellules, d’amplification des séquences nucléiques et d’emploi de barcodes cellulaires. La combinaison de ces techniques a permis d'automatiser et de raccourcir les expériences de séquençage et d'en optimiser les rendement. Les protocoles actuels autorisent le profilage individuel de dizaines de milliers de cellules par expérience.
+
+
+## From tissue to single-cell scale
+
+Given its efficiency, precision and sensitivity, RNA-seq is a powerful tool for comparing the expression levels of tens of thousands of transcripts between samples by differential analysis.
+However, in order to obtain the quantity of RNA required for sequencing (~100 ng), molecules are isolated from whole tissues and tens of thousands of cells. RNA quantification after sequencing is thus an average of expression across the different cell types in the tissue, hence the name "bulk" RNA-seq. However, this cellular heterogeneity biases:
+* the detection of differentially expressed genes specific to a restricted fraction of cell populations
+* the interpretation of differential analysis, in cases where the transcriptomic modulations measured are due to variations in the proportions of cell types sampled in the tissue from one sample to another.
+
+Furthermore, the tissue-resolution of bulk RNA-seq data prevents the precise description of the expression of a gene of interest and the detailed characterization of any transcriptomic modulations detected during analysis.
+To overcome these limitations, the 2010 decade has seen an explosion of protocols adapting RNA-seq to perform transcript sequencing at the single-cell level, notably through cell isolation techniques, nucleic sequence amplification and the use of cell barcodes. The combination of these techniques has enabled sequencing experiments to be automated, shortened and optimized. Current protocols allow individual profiling of tens of thousands of cells per experiment.
 
 <figure>
   <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnprot.2017.149/MediaObjects/41596_2018_Article_BFnprot2017149_Fig1_HTML.jpg?as=webp" alt="Svensson V, Vento-Tormo R, & Teichmann S. Nat Protoc. (2018)"/>
   <figcaption>Svensson V, Vento-Tormo R, & Teichmann S. Nat Protoc. (2018)</figcaption>
 </figure>
 
-#
-## L’approche single-cell RNA-seq basée sur l’isolement par droplets
 
-Parmi ces protocoles, les plus fréquemment employés se basent sur des techniques de manipulation microfluidique afin d'automatiser l'isolement des cellules dans des gouttelettes d'émulsions appelées droplets. Ce protocole débute par une étape de dissociation mécanique et enzymatique du tissu d’intérêt qui permet la mise en suspension des cellules qui sont aussitôt isolées les unes des autres dans des droplets. Chaque droplet contient les réactifs nécessaires à la lyse des cellules, à la capture et à la rétrotranscription de leurs ARN polyadénylés, ainsi qu'une bille de gel sur laquelle sont ancrées des dizaines d'oligonucléotides contenant  :
-* une séquence d'hybridation des ARN polyadénylés permettant d’amorcer leur rétrotranscription
-* un barcode moléculaire ou « UMI » permettant d’identifier chaque molécule capturée avant amplification et de prévenir les biais de quantification induits par des niveaux d’amplification PCR inégaux
-* un barcode cellulaire unique à chaque droplet
-* des amorces permettant l’amplification et la lecture des séquences
+## Single-cell RNA-seq based on droplet isolation
 
-L'ajout du barcode cellulaire sert à multiplexer la préparation et l'amplification de la librairie de séquençage. La lecture du barcode cellulaire par analyse bioinformatique permet d'assigner chaque molécule à une droplet et par extension à sa cellule d'origine. La quantification finale consiste à compter le nombre de lectures présentant une combinaison unique entre un barcode
-cellulaire, un UMI, et un gène associé.
+Among these protocols, the most frequently used are based on microfluidic manipulation techniques to automate cell isolation in emulsion droplets. The protocol begins with mechanical and enzymatic dissociation of the tissue of interest, enabling the cells to be suspended and then isolated from each other in droplets. Each droplet contains the reagents required for cell lysis, capture and retrotranscription of their polyadenylated RNA, as well as a gel bead on which are anchored dozens of oligonucleotides containing :
+* a sequence enabling hybridization of the polyadenylated RNAs to initiate retrotranscription
+* a molecular barcode or "UMI" to uniquely identify each molecule captured prior to amplification, and prevent quantification bias induced by uneven PCR amplification cycles
+* a cell barcode unique to each droplet
+* primers to amplify and read sequences
+
+The addition of the cell barcode allows multiplexing of sequencing library preparation and amplification. Its subsequent reading enables each molecule to be assigned to a droplet and, by extension, to its cell of origin. Final quantification consists of counting the number of reads presenting a unique combination of cell barcode, UMI and associated gene.
 
 
 
 <figure>
   <img src="/images/droplet.PNG" alt="Protocole scRNA-seq basé sur l’isolement par gouttelette"/>
-  <figcaption>Protocole scRNA-seq basé sur l’isolement par gouttelette</figcaption>
+  <figcaption>scRNA-seq protocol based on droplet isolation</figcaption>
 </figure>
 
 
-#
-## L’analyse bioinformatique de données single-cell RNA-seq
-Le scRNA-seq permet la quantification de dizaines de milliers de gènes dans des dizaines de milliers de cellules. Ce profilage exhaustif a pour objectif de distinguer des types ou des états cellulaires stables ou transitoires qui composent les tissus physiologiques et de comparer les modulations transcriptomiques induites par une pathologie, un traitement ou une modification génétique.
 
-Pour atteindre ces objectifs, les données issues du séquençage sont traitées par analyse bioinformatique selon 3 grandes phases.
-* La phase d’analyse primaire consiste à convertir les lectures de séquençages obtenues (reads) en matrices de comptes récapitulant l’expression de chaque gène dans chaque cellule.
-*  Ces matrices de comptes nécessitent ensuite un traitement particulier, du fait de leurs dimensions et des caractéristiques mathématiques des données qu’elles contiennent. Cette analyse secondaire est réalisée par un enchaînement d’opérations statistiques visant à éliminer les sources de variations techniques et à identifier les principales sources de variations biologiques afin de partitionner les cellules en fonction de la proximité de leurs profils d’expression génique (clustering). Lorsque l’étude nécessite l’analyse de plusieurs jeux de données, ces traitements sont appliqués de sorte à tenir compte des disparités entre échantillons séquencés via un processus d’intégration (correction de batchs).
-* Une fois les cellules regroupées en clusters homogènes, la dernière phase de l’analyse consiste à les comparer et à interpréter biologiquement les différences statistiques trouvées, en questionnant notamment les mécanismes de régulation impliqués.
+## Bioinformatics analysis of single-cell RNA-seq data
 
-Chacune de ces trois phases, ainsi que l’intégration des données,
-implique l’usage de méthodes de biologie computationnelle reposant à la fois sur des concepts mathématiques, sur des connaissances biologiques et sur des ressources de calculs informatiques. Ces développements méthodologiques ont produit une myriade d’outils dédiés à l’analyse de données single-cell RNA-seq. Malgré l’absence de hiérarchie claire pour prioriser l’emploi d’outils équivalents, un consensus s’est formé autour de la procédure globale et des meilleures pratiques à adopter.
-Pour en savoir plus sur les concepts, méthodes et outils utilisés, voir l'article dédié à [l'analyse de données single-cell RNA-seq](/guidelines/231101_MT_scRNAseq_introduction "L'analyse bioinformatique de données single-cell RNA-seq").
+scRNA-seq enables the quantification of tens of thousands of genes in tens of thousands of cells. The aim of this exhaustive profiling is to distinguish stable or transient cell types or states that constitute physiological tissues, and to compare transcriptomic modulations induced by pathology, treatment or genetic modification.
 
+To achieve these objectives, sequencing data are processed by bioinformatics analysis in 3 main phases.
+* The primary analysis phase consists of converting the sequencing reads obtained into count matrices summarizing the expression of each gene in each cell.
+* These count matrices then require special processing, due to their size and the mathematical characteristics of the data they contain. This secondary analysis is carried out by a sequence of statistical operations designed to eliminate sources of technical variation and identify the main sources of biological variation, in order to partition the cells according to the proximity of their gene expression profiles (clustering). When the study requires the analysis of several data sets, these treatments are applied to take into account disparities between sequenced samples via an integration process (batch correction).
+* Once the cells have been grouped into homogeneous clusters, the final phase of the analysis consists in comparing them and biologically interpreting the statistical differences found, in particular by investigating the involved regulatory mechanisms.
 
-## Avantages et limitations de l'approche
-
-De part sa résolution, le single-cell RNA-seq permet de capturer une vision d’ensemble de l'hétérogénéité cellulaire d'un tissu d'intérêt et d’explorer individuellement les profils transcriptomiques de ces différents compartiments. Lorsqu’il est question de comparer des conditions pathologiques/traitées et contrôles, cette résolution permet de caractériser les éventuelles modulations induites de manière spécifique à chaque population cellulaire. Cette caractérisation consiste notamment à identifier les signatures de gènes différentiellement exprimés dans chaque population, puis à utiliser des outils capables d'associer ces signatures à des mécanismes fonctionnels comme des voies de régulation, de signalisation ou de différenciation.
-
-Malgré l'apport de cette nouvelle résolution, la génomique fonctionnelle à l’échelle de la cellule unique reste limitée par la faible efficacité de capture des molécules d’intérêts, du fait de la quantité de matériel initiale minimes et de dynamiques de régulation discontinues comme les
-phénomènes de « transcriptionnal bursting ». De plus, le temps de demi-vie des ARNm atteint une valeur médiane de 9h chez les mammifères. La détection de ces molécules est donc stochastique, ce qui implique une quantification partielle et bruitée par le phénomène des comptes observés comme nuls (dropouts) dans certaines cellules alors que le gène est exprimé par le reste de la population. Classiquement, environ 90% des éléments d'une matrice de compte sont constitués de valeurs nulles.
-Cette particularité propre aux données single cell RNA-seq nécessite des méthodes d’[analyses bioinformatiques](/guidelines/231101_MT_scRNAseq_introduction "L'analyse bioinformatique de données single-cell RNA-seq") dédiées, garantissant l’interprétation biologique des résultats.
-Enfin, le transcriptome ne constitue qu'un niveau intermédiaire qui témoigne des régulations génomiques et épigénomiques et qui anticipe la fonction cellulaire majoritairement définie par le protéome.
-
-Pour dépasser ces limitations, de nouveaux développements techniques et méthodologiques sont à suivre, notamment au niveau des capacités de capture des ARN, de l'intégration de données multiomiques, de la [transcriptomique spatiale](/guidelines/231101_MT_scRNAseq_introduction "La transcriptomique spatiale") ou encore du séquençage de type "long-reads".
+Each of these three phases, as well as the integration of the data,
+involves the use of computational biology methods based on mathematical concepts, biological knowledge and computational resources. These methodological developments have produced a myriad of tools dedicated to the analysis of single-cell RNA-seq data. Despite the absence of a clear hierarchy for prioritizing the use of equivalent tools, a consensus has formed around the overall procedure and best practices to be adopted.
+To find out more about the concepts, methods and tools used, see the article dedicated to the guidelines for [the analysis of single-cell RNA-seq data](https://cobioda.github.io/guidelines/231101_MT_scRNAseq_analysis_1/ "The bioinformatic analysis of single-cell RNA-seq data").
 
 
-## Bibliographie
+## Strengths and limitations of the approach
+
+Thanks to its resolution, single-cell RNA-seq can capture an overall view of the cellular heterogeneity of a tissue of interest, and explore the transcriptomic profiles of these different compartments individually. When comparing pathological/treated and control conditions, this resolution allows to characterize any modulations specifically induced in each cell population. This characterization involves identifying the signatures of genes differentially expressed in each population, and then using tools able to associate these signatures with functional mechanisms such as regulatory, signaling or differentiation pathways.
+
+Despite the benefit of this new resolution, functional genomics at the single-cell level remains limited by the low capture efficiency of molecules of interest, due to the small amount of initial material and discontinuous regulatory dynamics such as transcriptional bursting. Moreover, the half-life of mRNAs reaches a median value of 9h in mammals. Detection of these molecules is therefore stochastic, implying partial quantification and noise due to the phenomenon of counts observed as zero (dropouts) in certain cells, while the gene is expressed by the rest of the population. Classically, around 90% of the elements of a count matrix are made up of null values.
+This particularity of single-cell RNA-seq data requires dedicated methods and procedures for the [bioinformatic analysis](https://cobioda.github.io/guidelines/231101_MT_scRNAseq_analysis_1/ "Bioinformatic analysis of single-cell RNA-seq data"), guaranteeing the biological interpretation of results.
+Finally, the transcriptome is only an intermediary level, reflecting genomic and epigenomic regulations and anticipating cellular function, which is largely defined by the proteome.
+
+To overcome these limitations, new technical and methodological developments are needed, notably in RNA capture capabilities, integration of multi-omics data, [spatial transcriptomics](https://cobioda.github.io/posts/2023/11/ST_imaging/ "Spatial imaging-based transcriptomics") and long-read sequencing.
+
+## Bibliography
 
 Svensson, V., Vento-Tormo, R. & Teichmann, S. A. Exponential scaling of single-cell RNA-seq in the past decade. Nat. Protoc. 13, 599–604 (2018)
 
