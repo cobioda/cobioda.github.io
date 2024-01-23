@@ -21,4 +21,7 @@ The main aim of CoBiODA is to setup a bioinformatics platform from the angle of 
 
 <br><br>
 
-![logos](/images/logos_ban.png "banniere")
+<figure>
+  <img src="/images/logos_ban.png" alt=""/>
+  <figcaption></figcaption>
+</figure>
