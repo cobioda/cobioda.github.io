@@ -8,7 +8,7 @@ toc: true
 
 {% include base_path %}
 
-CoBiODA is the Bioinformatics Hub of the Institute of Molecular and Cellular Pharmacology of CNRS located in Valbonne Sophia-Antipolis, Nice, France. It aims at setup a bioinformatics platform dedicated to the data analysis support of the IPMC research teams allowing an emulation of the bioinformatics resources within a common structure.
+CoBiODA is the bioinformatics Hub of the Institute of Molecular and Cellular Pharmacology (IPMC) of CNRS located in Valbonne Sophia-Antipolis, Nice, France. It aims at setup a bioinformatics platform dedicated to the data analysis support of the IPMC research teams allowing an emulation of the bioinformatics resources within a common structure.
 
 
 <style>
