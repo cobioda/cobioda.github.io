@@ -8,6 +8,7 @@ redirect_from:
   - /about.html
 ---
 
+
 Computational Biology Omics Data Analysis
 ======
 
@@ -20,6 +21,11 @@ The volume of data from experiments in biology is constantly increasing. The sto
 
 The main aim of CoBiODA is to setup a bioinformatics platform from the angle of a research support centre for the IPMC teams aiming to allow an emulation of the bioinformatics resources within a common structure. Such a structure will represent a possibility for developing strong interactions between bioinformaticians, gathering the team bioinformatics efforts and will facilitated transversal integration of heterogeneous data sets produced by the different technical platforms. Research teams could thus benefit from the high-performance bioinformatics support necessary for the production of high-impact publications enhancing the work of the institute's researchers and engineers.
 </div>
+
+<br><br>
+
+{% include image-gallery.html folder="/images" %}
+
 
 <br><br>
 
