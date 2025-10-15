@@ -50,7 +50,7 @@ img {
   <img src="/images/truchi.jpg" alt="truchi" title="truchi" width="150" />
   </div>
   <div class="text">
-  <b>Marin Truchi, PhD</b> has successfully defended its PhD entitled 'Le séquençage de transcrits sur cellule unique appliqué à l’étude des mécanismes de formation et de résolution de la fibrose pulmonaire' conducted in Bernard Mari's group earlier this year (2023). He is in charge of the data analysis and bioinformatics developments to support IPMC technological platforms and groups research.
+  <b>Marin Truchi, PhD</b> has successfully defended its PhD entitled 'Le séquençage de transcrits sur cellule unique appliqué à l’étude des mécanismes de formation et de résolution de la fibrose pulmonaire' conducted in Bernard Mari's group earlier this year (2023). Marin is in charge of the data analysis and bioinformatics developments to support IPMC technological platforms and groups research.
   </div>
 </div>
 
@@ -91,6 +91,17 @@ img {
 
 <div class="container2">
   <div class="image">
+  <img src="/images/chen.jpg" alt="chen" title="chen" width="150" />
+  </div>
+  <div class="text">
+  <b>Juejun Chen</b> is a UniCA PhD candidate in Pascal Barbry 's research team. Juejun is working on development of computational method for the anaysis of wasterwater samples to highlight and monitor pathogens presence along time.
+  </div>
+</div>
+
+<br>
+
+<div class="container2">
+  <div class="image">
   <img src="/images/hermet.jpg" alt="hermet" title="hermet" width="150" />
   </div>
   <div class="text">
@@ -102,7 +113,7 @@ img {
 
 <div class="container2">
   <div class="image">
-  <img src="/images/bonjour.jpg" alt="bonjour" title="bonjour" width="150" />
+  <img src="/images/anonyme.jpg" alt="bonjour" title="bonjour" width="150" />
   </div>
   <div class="text">
   <b>Catherine Bonjour, CDD</b> works in Bernard Mari and Georges Vassaux team working on a BPI granted project concerning the setup of consolidate an existing proof of concept to produce an in vitro test for the identification of non-genotoxic carcinogens (NGTxC), by combining the latest generation genomics tools and innovative AI approaches
